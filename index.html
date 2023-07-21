@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced playback video</title>
+    <link rel="stylesheet" type="text/css" href="style.css" >
+    <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="video-container paused " data-volume-level="high" >
+    <div class="video-controls-container">
+      <div class="timeline-container"></div>
+      <div class="controls">
+        <button class="play-pause-btn">
+          <img src="C:\Users\personal\Desktop\Tutorial\video\211876_play_icon.svg" class="play-icon"/>
+          <img src="C:\Users\personal\Desktop\Tutorial\video\5402447_video_pause_multimedia_player_media_icon.png" class="pause-icon"/>
+        </button>
+        <div class="volume-container">
+          <button class="mute-btn">
+            <img class="volume-high-icon" src="C:\Users\personal\Desktop\Tutorial\video\sound.png" alt="" />
+            <img class="volume-low-icon" src="C:\Users\personal\Desktop\Tutorial\video\low-sound.png" alt="" />
+            <img class="volume-muted-icon" src="C:\Users\personal\Desktop\Tutorial\video\mute.png" alt="" />
+          </button>
+          <input type="range" min="0" max="1" step="any" value="1" class="volume-slider" > 
+        </div>
+        <button class="mini-player-btn">
+          <img src="C:\Users\personal\Desktop\Tutorial\video\mini-player.svg" alt="miniplayer" />
+        </button>
+        <button class="theater-btn">
+          <img src="C:\Users\personal\Desktop\Tutorial\video\theater-mode.svg" alt="">
+        </button>
+        <button class="full-screen-btn">
+          <img src="C:\Users\personal\Desktop\Tutorial\video\full-screen.svg" class="open" width="30px" alt="">
+          <img src="C:\Users\personal\Desktop\Tutorial\video\full-screen (1).svg" class="close" width="30px" alt="">
+        </button>
+      </div>
+    </div>
+    <video class="video">
+      <source src="C:\Users\personal\Desktop\Tutorial\video\fideo.mp4" type="video/mp4">
+    </video>
+  </div>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="video__container">
+      <video  preload="auto" controls  width="600" height="360" loop autoplay="true">
+        <source src="/C:\Users\personal\Desktop\Tutorial\video\fideo.mp4" type="video/mp4" >
+        <script src="/script.js"></script>
+      </video>
+      <button>play</button>
+      
+      <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+      
+
+    </div>
+    
+  </body>
+</html> -->
+
+<!-- 
+  <!DOCTYPE html>
+<html>
+  <head>
+    <title>advanced playback feature</title>
+    <style>
+      #video-container {
+        width: 400px;
+        /* border: 2px solid black; */
+        height: 100%;
+        position: relative;
+      }
+      #video-controls {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        width: 400px;
+        /* border: 2px solid black; */
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="video-container">
+      <video id="video-player" width="100%" loop>
+        <source src="/C:\Users\personal\Desktop\Tutorial\video\fideo.mp4" type="video/mp4">
+      </video>
+      <div id="video-controls">
+        <button id="back-forward">-</button>
+        <button id="play-pause-btn">Play</button>
+        <button id="fast-forward">+</button>
+      </div>
+    </div>
+
+    <script>
+      var videoPlayer = document.getElementById('video-player');
+      var playPauseBtn = document.getElementById('play-pause-btn');
+      const fast = document.getElementById('fast-forward');
+      const back = document.getElementById('back-forward');
+
+      playPauseBtn.addEventListener('click', function() {
+        if (videoPlayer.paused || videoPlayer.ended) {
+          videoPlayer.play();
+          playPauseBtn.innerHTML = 'Pause';
+        } else {
+          videoPlayer.pause();
+          playPauseBtn.innerHTML = 'Play';
+        }
+      });
+
+      fast.addEventListener('click', function() {
+        videoPlayer.currentTime += 2 ;
+        
+      })
+      back.addEventListener('click', function() {
+        videoPlayer.currentTime = 5;
+      })
+
+    </script>
+  </body>
+</html> -->
+
+
+
+<!-- s
+  <video id="myVideo" controls>
+    <source src="path_to_video.mp4" type="video/mp4">
+  </video>
+  
+  <button id="playButton">Play</button>
+  <button id="stopButton">Stop</button> -->
+  
+
+  
+  <!-- <h2 title="The first heading ">Write a letter on why you started to write code.</h2>
+    <h3>Make the letter as short as possible</h3>
+    <br/>
+    <br/>
+
+  <h1>WHY I STARTED TO WRITE CODE.</h1>
+  <P> 
+    Asides from the joy that i derive while building something that actually works perfectly, i also love the fact that i get to learn new things everyday while pursuing a goal. Tech has actually been a good thing to love in the first place, it is a proof that when you put time and effort into something it is going to come out really well. For me coming out well is not enough bringing people to tech is also an objective while learning because making people miss out on oppurtunities is not so good. 
+  </P>
+  <p>
+    Secondly, solving problems is one of the major reasons why i started to write codes. Each line of code that is available is a means to solving a problem or to make life easier for people that use the product, a bussinessman in the part spends a whole lot of money to reach out to a crowd that he wants to sell his bussiness to, but now with the aid of a well detailed website he can reach millions of people without even having to leave the comfort of his house or phone. Its better because he can update his website really quickly to keep his costumers up to date with the arrivals and shortage of goods and services available.
+  </p> -->
+  
