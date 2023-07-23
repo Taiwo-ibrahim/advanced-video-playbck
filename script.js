@@ -2,12 +2,17 @@ const playpauseBtn = document.querySelector(".play-pause-btn")
 const theaterBtn = document.querySelector(".theater-btn")
 const fullScreenBtn = document.querySelector(".full-screen-btn")
 const miniPlayerBtn = document.querySelector(".mini-player-btn")
+const speedBtn = document.querySelector(".speed-btn")
 const muteBtn = document.querySelector(".mute-btn")
 const volumeSlider = document.querySelector(".volume-slider")
 const totalTimeElem = document.querySelector(".total-time")
+const previewImg = document.querySelector(".preview-img")
+const thumbnailImg = document.querySelector(".thumbnail-img")
 const currentTimeElem = document.querySelector(".current-time")
 const video = document.querySelector(".video")
 const videoContainer = document.querySelector(".video-container")
+const timelineContainer =document.querySelector(".timeline-container")
+
 
 playpauseBtn.addEventListener("click", togglePlay)
 
@@ -45,6 +50,58 @@ document.addEventListener("keydown", e => {
   }
 })  
 
+// timeline section
+timelineContainer.addEventListener("mousemove", handleTimelineUpdate)
+timelineContainer.addEventListener("mousedown", toggleScrubbing)
+document.addEventListener("mouseup", e => {
+  if(isScrubbing) toggleScrubbing()
+})
+document.addEventListener("mousmove", e => {
+  if(isScrubbing) handleTimelineUpdate()
+})
+
+let isScrubbing = false
+let wasPaused
+function toggleScrubbing(e) {
+  const rect = timelineContainer.getBoundingClientRect()
+  const percent = Math.min(Math.max(0, e.x - rect.x), rect.width ) / rect.width
+  isScrubbing = (e.buttons & 1) === 1
+  videoContainer.classList.toggle("scrubbing", isScrubbing)
+  if(isScrubbing) {
+    wasPaused = video.paused
+    video.pause()
+  }else {
+    video.currentTime = percent * video.duration
+    if(!wasPaused) video.play()
+  }
+
+  handleTimelineUpdate(e)
+}
+
+function handleTimelineUpdate(e) {
+  const rect = timelineContainer.getBoundingClientRect()
+  const percent = Math.min(Math.max(0, e.x - rect.x), rect.width ) / rect.width
+  timelineContainer.style.setProperty("--preview-position", percent)
+
+  if(isScrubbing){
+    e.preventDefault()
+    timelineContainer.style.setProperty("--progress-position", percent)
+
+  }
+
+
+}
+
+// playback speed section
+speedBtn.addEventListener("click", changePlaybackSpeed)
+
+function changePlaybackSpeed() {
+  let newPlaybackRate = video.playbackRate + .25
+  if (newPlaybackRate > 2) newPlaybackRate = .25
+  video.playbackRate = newPlaybackRate
+  speedBtn.textContent = `${newPlaybackRate}x`
+}
+
 // duration section
 
 video.addEventListener("loadeddata", () => {
@@ -52,6 +109,9 @@ video.addEventListener("loadeddata", () => {
 })
 video.addEventListener("timeupdate", () => {
   currentTimeElem.textContent = formatDuration(video.currentTime)
+  const percent = video.currentTime / video.duration 
+  timelineContainer.style.setProperty("--progress-position", percent)
+
 })
 
 const leadingZeroFormatter = new Intl.NumberFormat(undefined, {
